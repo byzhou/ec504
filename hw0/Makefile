@@ -4,4 +4,4 @@ compile:
 	javac binarysum.java
 
 run:compile
-	java binarysum
+	java binarysum temp.txt
