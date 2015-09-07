@@ -8,7 +8,7 @@ run_binary:compile
 	java binarysum temp.txt
 
 run_string:compile
-	java myStringAnalyser abababaaa 1
+	java myStringAnalyser abababaaa 2
 
 clean:
 	rm -rf *.class *~
