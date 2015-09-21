@@ -35,8 +35,8 @@ public class MySolution {
                 break ;
             } else if ( A[medianAIndex] > B[medianBIndex] ) {
                 // in the loop 
+                medianBIndex    = medianBIndex +  ;
                 medianAIndex    = medianAIndex / 2 ;
-                medianBIndex    = ( medianBIndex + B.length ) / 2 ;
             } else if ( A[medianAIndex] < B[medianBIndex] ) {
                 // in the loop
                 medianAIndex    = ( medianAIndex + A.length ) / 2 ;
