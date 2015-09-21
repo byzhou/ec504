@@ -1,4 +1,5 @@
 public class MySolution {
+
     public static void main(String[] args) {
         // System.out.println("hello world") ;
 
@@ -21,26 +22,43 @@ public class MySolution {
     }
 
     public int findMedianSortedArrays ( int A[], int B[] ) {
-
-        int medianIndex     = ( A.length + B.length + 1 ) / 2 ;
-        int medianAIndex    = A.length / 2 ;
-        int medianBIndex    = B.length / 2 ;
+        
+        // use the long short format 
+        int[] shortArray , longArray ;
+        if ( A.length < B.length ) {
+            shortArray          = A.clone() ;
+            longArray           = B.clone() ;
+        } else {
+            shortArray          = B.clone() ;
+            longArray           = A.clone() ;
+        }
+        
+        // median index initialization 
+        int medianIndex         = ( A.length + B.length + 1 ) / 2 ;
+        int medianShortIndex    = shortArray.length / 2 ;
+        int medianLongIndex     = longArray.length / 2 ;
 
         // median initialization
-        int medianValue     = A[medianAIndex] ;
+        int medianValue         = A[medianShortIndex] ;
 
         while(true) {
-            if ( A[medianAIndex] == B[medianBIndex] ) {
-                medianValue     = A[medianAIndex] ;
+            if ( shortArray[medianShortIndex] == longArray[medianLongIndex] ) {
+                medianValue         = shortArray[medianShortIndex] ;
                 break ;
-            } else if ( A[medianAIndex] > B[medianBIndex] ) {
-                // in the loop 
-                medianBIndex    = medianBIndex +  ;
-                medianAIndex    = medianAIndex / 2 ;
-            } else if ( A[medianAIndex] < B[medianBIndex] ) {
-                // in the loop
-                medianAIndex    = ( medianAIndex + A.length ) / 2 ;
-                medianBIndex    = medianBIndex / 2 ;
+            } else if ( medianShortIndex == 0 ) {
+                medianValue         = longArray[medianIndex] ;
+                break ;
+            } else if ( medianShortIndex == ( shortArray.length - 1 ) ) {
+                medianValue         = longArray[medianIndex - shortArray.length] ;
+                break ;
+            } else if ( shortArray[medianShortIndex] > longArray[medianLongIndex] ) {
+                // problems
+                medianLongIndex     = medianLongIndex + medianShortIndex / 2 ;
+                medianShortIndex    = medianShortIndex / 2 ;
+            } else if ( shortArray[medianShortIndex] < longArray[medianLongIndex] ) {
+                // problems
+                medianLongIndex     = medianLongIndex - medianShortIndex / 2 ;
+                medianShortIndex    = medianShortIndex + medianShortIndex / 2 ;
             }
         }
 
