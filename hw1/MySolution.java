@@ -38,6 +38,10 @@ public class MySolution {
         int medianShortIndex    = shortArray.length / 2 ;
         int medianLongIndex     = longArray.length / 2 ;
 
+        // tmp size of current working sub-array
+        int shortSubArraySize   = shortArray.length / 2 ;
+        int longSubArraySize    = longArray.length / 2 ;
+
         // median initialization
         int medianValue         = A[medianShortIndex] ;
 
@@ -53,12 +57,16 @@ public class MySolution {
                 break ;
             } else if ( shortArray[medianShortIndex] > longArray[medianLongIndex] ) {
                 // problems
-                medianLongIndex     = medianLongIndex + medianShortIndex / 2 ;
-                medianShortIndex    = medianShortIndex / 2 ;
+                shortSubArraySize   = shortSubArraySize / 2 ;
+                longSubArraySize    = longSubArraySize / 2 ;
+                medianLongIndex     = medianLongIndex + shortSubArraySize ;
+                medianShortIndex    = medianShortIndex - shortSubArraySize ;
             } else if ( shortArray[medianShortIndex] < longArray[medianLongIndex] ) {
                 // problems
-                medianLongIndex     = medianLongIndex - medianShortIndex / 2 ;
-                medianShortIndex    = medianShortIndex + medianShortIndex / 2 ;
+                shortSubArraySize   = shortSubArraySize / 2 ;
+                longSubArraySize    = longSubArraySize / 2 ;
+                medianLongIndex     = medianLongIndex - shortSubArraySize ;
+                medianShortIndex    = medianShortIndex + shortSubArraySize ;
             }
         }
 
