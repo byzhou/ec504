@@ -56,18 +56,16 @@ public class MySolution {
                 medianValue         = longArray[medianIndex - shortArray.length] ;
                 break ;
             } else if ( shortArray[medianShortIndex] > longArray[medianLongIndex] ) {
-                // problems
                 shortSubArraySize   = shortSubArraySize / 2 ;
                 longSubArraySize    = longSubArraySize / 2 ;
                 medianLongIndex     = medianLongIndex + shortSubArraySize ;
                 medianShortIndex    = medianShortIndex - shortSubArraySize ;
             } else if ( shortArray[medianShortIndex] < longArray[medianLongIndex] ) {
-                // problems
                 shortSubArraySize   = shortSubArraySize / 2 ;
                 longSubArraySize    = longSubArraySize / 2 ;
                 medianLongIndex     = medianLongIndex - shortSubArraySize ;
                 medianShortIndex    = medianShortIndex + shortSubArraySize ;
-            }
+            } // no converging condition
         }
 
         System.out.println ( medianIndex ) ;
