@@ -1,3 +1,5 @@
+        //s.connect(new InetSocketAddress(host , 80));
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,9 +10,10 @@ import java.net.Socket;
 public class test {
   public static void main(String[] args) {
     String host = "www.google.com";
-    String protocol = "https";
+    String protocol = "http";
     try {
-      Socket socket = new Socket(protocol + "://" + host, 80);
+      //Socket socket = new Socket(protocol + "://" + host, 80);
+      Socket socket = new Socket(host, 80);
       OutputStream os = socket.getOutputStream();
       boolean autoflush = true;
       PrintWriter out = new PrintWriter(socket.getOutputStream(), autoflush);
