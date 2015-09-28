@@ -1,32 +1,6 @@
 import java.util.Arrays ;
 public class MySolution {
 
-    public static void main(String[] args) {
-        // System.out.println("hello world") ;
-
-        int A[], B[] ;
-
-        A = new int[10] ;
-        B = new int[3] ;
-        
-        for ( int j = 0 ; j < 16 ; j ++ ) {
-            for ( int i = 0 ; i < 10 ; i ++ ) {
-                A[i] = i + 6 ;
-            }
-
-            for ( int i = 0 ; i < 3 ; i ++ ) {
-                B[i] = i + j ;
-            }
-
-            System.out.println ( Arrays.toString(A) ) ;
-            System.out.println ( Arrays.toString(B) ) ;
-
-            MySolution testSolution = new MySolution () ;
-            testSolution.findMedianSortedArrays ( A , B ) ;
-        }
-
-    }
-
     public int findMedianSortedArrays ( int A[], int B[] ) {
         
         // use the long short format 
