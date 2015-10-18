@@ -1,4 +1,10 @@
+// a) 1076
+// b) 1027.5992341648289
+// c) 5000379.5
+
+
 import java.util.*;
+
 
 public class RunningMedian {
 
