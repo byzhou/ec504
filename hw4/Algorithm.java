@@ -6,6 +6,8 @@
 //package shortestpath;
 
 import java.util.List;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 
 public class Algorithm
 {
@@ -22,16 +24,28 @@ public class Algorithm
     void modifiedDijkstra()
     {
         // This is where you write your version of Dijkstra's modified algorithm
+        // new priorityqueue
+        PriorityQueue<Node> unscannedNodes = new PriorityQueue<Node>(nodeList.size(), 
+                                               new Comparator<Node>() {
+            public int compare ( Node node1, Node node2 ) {
+                return node1.compareTo ( node2 ) ;
+            }
+                                               });
         // Initialization of the graph. Distance from all the nodes to the source is infinity. And
         // the distance from the source to the source is 0.
         for ( Node currNode : nodeList ) {
+            currNode.parent = null ;
             if ( currNode == source )
                 currNode.dist   = 0 ;
             else
                 currNode.dist   = 999999;
+            unscannedNodes.offer ( currNode ) ;
         }
 
-        for ( Node currNode : nodeList ) {
+        while ( true ) {
+            Node currNode = unscannedNodes.poll() ;
+            if ( currNode == null ) 
+                break ;
 
             for ( Edge edgeToCurrNode : currNode.out_list ) {
                 // update the current distance. This distance has not been relaxed.
