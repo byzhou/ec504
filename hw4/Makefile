@@ -3,10 +3,13 @@ target_class	:= $(src_java:%.java=%.class)
 
 all:run
 
-%.class:%.java
-	javac $<
+#%.class:%.java
+#	javac $<
 
-run:$(target_class)
+ShortestPath.class: $(src_java)
+	javac $(src_java)
+
+run: ShortestPath.class
 	java ShortestPath
 
 .PHONY: all run clean

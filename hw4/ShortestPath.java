@@ -15,7 +15,7 @@ public class ShortestPath
 {
     static int n, m; // num nodes, num edges
     static boolean isdigraph;
-    static List<Node> nodeList = new ArrayList<>();
+    static List<Node> nodeList = new ArrayList<Node>();
 
     static Node findNode(String name)
     {
@@ -124,8 +124,7 @@ public class ShortestPath
         System.out.println("number of nodes " + nodeList.size());
         for (Node node : nodeList)
         {
-            System.out.println("Distance to node " + node.name + " is " + node.dist 
-			       + " and there are " + /* your code here*/ + " shortest paths");
+            System.out.println("Distance to node " + node.name + " is " + node.dist + " and there are "  /* your code here*/ + " shortest paths");
         }
 
         int endnode = nodeList.size() / 2 + 1;
