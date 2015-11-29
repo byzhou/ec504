@@ -1,4 +1,4 @@
-src_java        := BST.java MyBST.java
+src_java        := Edge.java Node.java Algorithm.java ShortestPath.java
 target_class	:= $(src_java:%.java=%.class)
 
 all:run
@@ -7,7 +7,7 @@ all:run
 	javac $<
 
 run:$(target_class)
-	java MyBST
+	java ShortestPath
 
 .PHONY: all run clean
 clean:
