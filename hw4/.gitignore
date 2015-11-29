@@ -1,3 +1,5 @@
 *.class
 *.txt
 *.swp
+!g1.txt
+!g2.txt
