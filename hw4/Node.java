@@ -16,6 +16,9 @@ public class Node implements Comparable {
 	Node 	parent;		/* previous node of the shortest path */
 	boolean inqueue; 	/* node is in Queue to be scanned */
 	String	name;
+    // something of my own
+    int count ;
+    boolean visited ;
 	@Override
 	public int compareTo(Object other)
         {

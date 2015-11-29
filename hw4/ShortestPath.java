@@ -102,7 +102,7 @@ public class ShortestPath
 
     public static void main(String args[])
     {
-        String filename = "g1.txt";
+        String filename = "g2.txt";
         Node nod;
 
         try
@@ -127,7 +127,7 @@ public class ShortestPath
         for (Node node : nodeList)
         {
             System.out.println("Distance to node " + node.name + " is " + node.dist + " and there are "  
-                /* your code here*/ + " shortest paths");
+                + node.count + " shortest paths");
         }
 
         int endnode = nodeList.size() / 2 + 1;

@@ -33,12 +33,15 @@ public class Algorithm
                                                });
         // Initialization of the graph. Distance from all the nodes to the source is infinity. And
         // the distance from the source to the source is 0.
+        //unscannedNodes.offer ( source ) ;
         for ( Node currNode : nodeList ) {
             currNode.parent = null ;
             if ( currNode == source )
                 currNode.dist   = 0 ;
             else
                 currNode.dist   = 999999;
+            currNode.count      = 1 ;
+            currNode.visited    = false ;
             unscannedNodes.offer ( currNode ) ;
         }
 
@@ -48,12 +51,23 @@ public class Algorithm
                 break ;
 
             for ( Edge edgeToCurrNode : currNode.out_list ) {
-                // update the current distance. This distance has not been relaxed.
-                if ( edgeToCurrNode.end.dist > ( currNode.dist + edgeToCurrNode.len ) ) {
-                    edgeToCurrNode.end.dist     = currNode.dist + edgeToCurrNode.len ;
-                    edgeToCurrNode.end.parent   = currNode ;
+                //if ( currNode == source )
+                //    edgeToCurrNode.end.parent       = currNode ;
+                if ( edgeToCurrNode.end.visited == false ) {
+                    edgeToCurrNode.end.dist         = currNode.dist + edgeToCurrNode.len ;
+                    edgeToCurrNode.end.visited      = true ; 
+                    edgeToCurrNode.end.count        = currNode.count ;
+                } else { // edgeToCurrNode.end.visited == true
+                    if ( edgeToCurrNode.end.dist == ( currNode.dist + edgeToCurrNode.len ) ) {
+                        edgeToCurrNode.end.count    += currNode.count ;
+                    // update the current distance. This distance has not been relaxed.
+                    } else if ( edgeToCurrNode.end.dist > ( currNode.dist + edgeToCurrNode.len ) ) {
+                        edgeToCurrNode.end.dist     = currNode.dist + edgeToCurrNode.len ;
+                        edgeToCurrNode.end.count    = currNode.count ;
+                        edgeToCurrNode.end.parent   = currNode ;
+                    }
+                    //System.out.println ( edgeToCurrNode.name ) ;
                 }
-                //System.out.println ( edgeToCurrNode.name ) ;
             }
 
         }
