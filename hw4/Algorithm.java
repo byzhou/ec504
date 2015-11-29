@@ -35,8 +35,10 @@ public class Algorithm
 
             for ( Edge edgeToCurrNode : currNode.out_list ) {
                 // update the current distance. This distance has not been relaxed.
-                if ( edgeToCurrNode.end.dist > ( currNode.dist + edgeToCurrNode.len ) )
+                if ( edgeToCurrNode.end.dist > ( currNode.dist + edgeToCurrNode.len ) ) {
                     edgeToCurrNode.end.dist     = currNode.dist + edgeToCurrNode.len ;
+                    edgeToCurrNode.end.parent   = currNode ;
+                }
                 //System.out.println ( edgeToCurrNode.name ) ;
             }
 
