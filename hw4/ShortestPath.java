@@ -64,7 +64,8 @@ public class ShortestPath
             switch (st.nextToken())
             {
                 case StreamTokenizer.TT_NUMBER:
-                    edge.start = (Node) nodeList.get((int) st.nval);
+                    //edge.start = (Node) nodeList.get((int) st.nval);
+                    edge.start = nodeList.get((int) st.nval);
                     break;
                 case StreamTokenizer.TT_WORD:
                     edge.start = findNode(st.sval);
@@ -75,7 +76,8 @@ public class ShortestPath
             switch (st.nextToken())
             {
                 case StreamTokenizer.TT_NUMBER:
-                    edge.end = (Node) nodeList.get((int) st.nval);
+                    //edge.end = (Node) nodeList.get((int) st.nval);
+                    edge.end = nodeList.get((int) st.nval);
                     break;
                 case StreamTokenizer.TT_WORD:
                     edge.end = findNode(st.sval);
@@ -100,7 +102,7 @@ public class ShortestPath
 
     public static void main(String args[])
     {
-        String filename = "g3.txt";
+        String filename = "g1.txt";
         Node nod;
 
         try
@@ -124,11 +126,13 @@ public class ShortestPath
         System.out.println("number of nodes " + nodeList.size());
         for (Node node : nodeList)
         {
-            System.out.println("Distance to node " + node.name + " is " + node.dist + " and there are "  /* your code here*/ + " shortest paths");
+            System.out.println("Distance to node " + node.name + " is " + node.dist + " and there are "  
+                /* your code here*/ + " shortest paths");
         }
 
         int endnode = nodeList.size() / 2 + 1;
-        nod = (Node) nodeList.get(endnode);
+        //nod = (Node) nodeList.get(endnode);
+        nod = nodeList.get(endnode);
         while (nod != null)
         {
             if (nod.parent == null)
