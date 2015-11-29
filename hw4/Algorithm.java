@@ -50,6 +50,8 @@ public class Algorithm
             if ( currNode == null ) 
                 break ;
 
+            currNode.visited    = true ;
+
             for ( Edge edgeToCurrNode : currNode.out_list ) {
                 //if ( currNode == source )
                 //    edgeToCurrNode.end.parent       = currNode ;
@@ -57,6 +59,7 @@ public class Algorithm
                     edgeToCurrNode.end.dist         = currNode.dist + edgeToCurrNode.len ;
                     edgeToCurrNode.end.visited      = true ; 
                     edgeToCurrNode.end.count        = currNode.count ;
+                        edgeToCurrNode.end.parent   = currNode ;
                 } else { // edgeToCurrNode.end.visited == true
                     if ( edgeToCurrNode.end.dist == ( currNode.dist + edgeToCurrNode.len ) ) {
                         edgeToCurrNode.end.count    += currNode.count ;
